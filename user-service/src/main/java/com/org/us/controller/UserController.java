@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.org.us.client.UserClient;
+import com.org.us.client.CatalogClient;
 import com.org.us.dto.OrderDTO;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -19,15 +19,15 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 @RequestMapping("/user-service")
 public class UserController
 {
-	private UserClient userClient;
+	private CatalogClient catalogClient;
 
-	public static final String USER_SERVICE = "userService";
+	private static final String USER_SERVICE = "userService";
 
 	// private int attempt = 1;
 
-	public UserController(UserClient userClient)
+	public UserController(CatalogClient catalogClient)
 	{
-		this.userClient = userClient;
+		this.catalogClient = catalogClient;
 	}
 
 	@GetMapping("/displayOrders")
@@ -39,10 +39,10 @@ public class UserController
 
 		if(StringUtils.hasText(category))
 		{
-			return userClient.getOrdersByCategory(category);
+			return catalogClient.getOrdersByCategory(category);
 		}
 
-		return userClient.getOrders();
+		return catalogClient.getOrders();
 	}
 
 	public List<OrderDTO> getAllAvailableProducts(Exception e)
@@ -55,5 +55,4 @@ public class UserController
 				new OrderDTO(678, "Vegetable chopper", "kitchen", "blue", 999),
 				new OrderDTO(532, "Oven Gloves", "kitchen", "gray", 745)).collect(Collectors.toList());
 	}
-
 }
