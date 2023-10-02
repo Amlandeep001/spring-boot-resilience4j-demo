@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +18,12 @@ import jakarta.annotation.PostConstruct;
 @RequestMapping("/orders")
 public class CatalogController
 {
-	@Autowired
-	private OrderRepository orderRepository;
+	private final OrderRepository orderRepository;
+
+	public CatalogController(OrderRepository orderRepository)
+	{
+		this.orderRepository = orderRepository;
+	}
 
 	@PostConstruct
 	public void initOrdersTable()

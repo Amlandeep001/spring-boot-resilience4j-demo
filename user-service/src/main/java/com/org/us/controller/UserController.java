@@ -53,6 +53,7 @@ public class UserController
 				new OrderDTO(475, "Sound bar", "electronics", "black", 13000),
 				new OrderDTO(574, "Puma Shoes", "foot wear", "black & white", 4600),
 				new OrderDTO(678, "Vegetable chopper", "kitchen", "blue", 999),
-				new OrderDTO(532, "Oven Gloves", "kitchen", "gray", 745)).collect(Collectors.toList());
+				new OrderDTO(532, "Oven Gloves", "kitchen", "gray", 745))
+				.collect(Collectors.toList());
 	}
 }
