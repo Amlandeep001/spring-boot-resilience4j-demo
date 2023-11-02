@@ -48,5 +48,4 @@ public class CatalogController
 	{
 		return orderRepository.findByCategory(category);
 	}
-
 }
