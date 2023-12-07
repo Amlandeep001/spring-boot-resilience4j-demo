@@ -12,7 +12,7 @@ import com.org.us.dto.OrderDTO;
 public interface CatalogClient
 {
 	@GetMapping
-	public List<OrderDTO> getOrders();
+	List<OrderDTO> getOrders();
 
 	@GetMapping("/{category}")
 	List<OrderDTO> getOrdersByCategory(@PathVariable String category);
