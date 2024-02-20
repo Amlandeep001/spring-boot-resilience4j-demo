@@ -19,7 +19,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 @RequestMapping("/user-service")
 public class UserController
 {
-	private CatalogClient catalogClient;
+	private final CatalogClient catalogClient;
 
 	private static final String USER_SERVICE = "userService";
 
