@@ -33,7 +33,7 @@ public class UserController
 	@GetMapping("/displayOrders")
 	@CircuitBreaker(name = USER_SERVICE, fallbackMethod = "getAllAvailableProducts")
 	// @Retry(name = USER_SERVICE, fallbackMethod = "getAllAvailableProducts")
-	public List<OrderDTO> displayOrders(@RequestParam("category") String category)
+	public List<OrderDTO> displayOrders(@RequestParam String category)
 	{
 		// System.out.println("retry method called " + attempt++ + " times " + " at " + new Date());
 
